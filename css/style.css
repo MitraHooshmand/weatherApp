@@ -1,0 +1,102 @@
+body {
+  font-family: "Prompt", sans-serif;
+}
+h1,
+h2,
+h3 {
+  padding: 5px 30px;
+}
+h1 {
+  color: #2e7d32;
+  font-size: 55px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 25px;
+  font-weight: 200px;
+}
+h3 {
+  font-size: 15px;
+  font-weight: 100px;
+  opacity: 0.6;
+}
+img {
+  width: 100px;
+  display: inline;
+  /* border: 1px solid red; */
+}
+hr {
+  width: 85%;
+  margin: 15px auto;
+  display: block;
+}
+#showTemp {
+  margin: 0px;
+}
+a {
+  color: #2e7d32;
+  text-decoration: none;
+}
+a:hover {
+  font-weight: bold;
+  color: #2e7d32;
+}
+.currentTemp {
+  font-size: 12px;
+  /*margin: 1px 6px;*/
+  position: relative;
+  top: 12px;
+}
+.cilciusFarenhayt {
+  color: black;
+  font-size: 12px;
+  font-weight: lighter;
+  vertical-align: top;
+}
+
+.bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.9;
+}
+.card-bg {
+  border-radius: 5.25rem;
+  width: 666px;
+  display: block;
+  margin: 90px auto;
+  background-color: #f9f9f9;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  /* margin: 90px 50px; */
+  min-width: 412px;
+}
+.summeriInfo {
+  padding: 30px 45px;
+}
+.summeriInfo p {
+  font-size: 12px;
+  display: inline;
+  opacity: 0.6;
+}
+.smallIcon:hover {
+  color: #2e7d32;
+}
+.nextDays {
+  padding: 5px 60px;
+  margin: 3px 20px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+.nextDays:hover {
+  color: #2e7d32;
+}
+.nextDayIcon {
+  font-size: 20px;
+  opacity: 0.6;
+}
+.nextDayIcon:hover {
+  color: #2e7d32;
+  opacity: 0.9;
+}
