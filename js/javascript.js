@@ -38,10 +38,6 @@ function fetchText(param) {
   onLoadDataTemp(inputText);
   //let h2 = document.querySelector("h2");
   // h2.innerHTML = inputText;
-
-  //let apiKey = "9a740d7fbaf516b932eb59f405516e16";
-  // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${apiKey}&units=metric`;
-  //axios.get(apiUrl).then(showCityTemp);
 }
 //////////////////// Current Temp Data
 function showAllCurrentData(position) {
