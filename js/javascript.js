@@ -1,5 +1,5 @@
 let myDate = new Date();
-let weekDay = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Satur"];
+let weekDay = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
 
 //////// putting  0  befor minutes
 if (myDate.getMinutes() < 10) {
