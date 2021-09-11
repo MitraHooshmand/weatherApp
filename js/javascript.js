@@ -64,8 +64,6 @@ function chgToFahren(event) {
     flag = 1;
   }
 }
-let faren = document.querySelector("#fahrenheit");
-faren.addEventListener("click", chgToFahren);
 
 function chgTocelsius(event) {
   if (flag == 1) {
@@ -76,9 +74,13 @@ function chgTocelsius(event) {
     flag = 0;
   }
 }
+
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", chgTocelsius);
-//////////////////// C|F  End
+
+let faren = document.querySelector("#fahrenheit");
+faren.addEventListener("click", chgToFahren);
+////////////////////
 
 let searchBox = document.querySelector("#searchForm");
 searchBox.addEventListener("submit", fetchText);
@@ -86,6 +88,6 @@ searchBox.addEventListener("submit", fetchText);
 let currentTemp = document.querySelector(".currentTemp");
 currentTemp.addEventListener("click", showCurrentlocationTemp);
 
-//////////////////// C|F Start
+////////////////////
 
 onLoadDataTemp("Iran");
