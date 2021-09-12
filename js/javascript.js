@@ -26,7 +26,10 @@ function showCityTemp(response) {
   showTemp.innerHTML = Math.round(response.data.main.temp);
   Precipitation.innerHTML = response.data.main.humidity;
   Wind.innerHTML = Math.round(response.data.wind.speed);
-  icon.setAttribute("src", ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`); 
+  icon.setAttribute(
+    "src",
+    ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+  );
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
@@ -63,6 +66,8 @@ function chgToFahren(event) {
     let tempPlaceholder = document.querySelector("#showTemp");
     let tofahrenheit = Math.round((tempPlaceholder.innerHTML * 9) / 5 + 32);
     tempPlaceholder.innerHTML = tofahrenheit;
+    faren.classList.add("active");
+    celsius.classList.remove("active");
     flag = 1;
   }
 }
@@ -73,6 +78,8 @@ function chgTocelsius(event) {
     let tempPlaceholder = document.querySelector("#showTemp");
     let toCelsius = Math.round(((tempPlaceholder.innerHTML - 32) * 5) / 9);
     tempPlaceholder.innerHTML = toCelsius;
+    faren.classList.remove("active");
+    celsius.classList.add("active");
     flag = 0;
   }
 }
