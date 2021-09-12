@@ -13,17 +13,21 @@ if (myDate.getMinutes() < 10) {
 }
 /////////////////////  Type City Name
 function showCityTemp(response) {
+  //console.log(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`);
+
   let h2 = document.querySelector("h2");
   let h3 = document.querySelector("h3");
   let showTemp = document.querySelector("#showTemp");
   let Precipitation = document.querySelector("#Precipitation");
   let Wind = document.querySelector("#Wind");
+  let icon = document.querySelector("#imgIcon");
   h2.innerHTML = response.data.name;
   h3.innerHTML = response.data.weather[0].description;
   showTemp.innerHTML = Math.round(response.data.main.temp);
   Precipitation.innerHTML = response.data.main.humidity;
   Wind.innerHTML = Math.round(response.data.wind.speed);
-  console.log(response.data);
+  icon.setAttribute("src", ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`); 
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function onLoadDataTemp(inputText) {
@@ -41,7 +45,6 @@ function fetchText(param) {
 }
 //////////////////// Current Temp Data
 function showAllCurrentData(position) {
-  // alert("bye");
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "9a740d7fbaf516b932eb59f405516e16";
@@ -51,7 +54,6 @@ function showAllCurrentData(position) {
 
 function showCurrentlocationTemp(param) {
   param.preventDefault();
-  //alert("hi");
   navigator.geolocation.getCurrentPosition(showAllCurrentData);
 }
 let flag = 0;
