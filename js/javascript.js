@@ -21,16 +21,17 @@ function showCityTemp(response) {
   let Precipitation = document.querySelector("#Precipitation");
   let Wind = document.querySelector("#Wind");
   let icon = document.querySelector("#imgIcon");
-  h2.innerHTML = response.data.name;
+  h2.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   h3.innerHTML = response.data.weather[0].description;
   showTemp.innerHTML = Math.round(response.data.main.temp);
   Precipitation.innerHTML = response.data.main.humidity;
   Wind.innerHTML = Math.round(response.data.wind.speed);
   icon.setAttribute(
     "src",
-    ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+  console.log(response);
 }
 
 function onLoadDataTemp(inputText) {
@@ -53,6 +54,8 @@ function showAllCurrentData(position) {
   let apiKey = "9a740d7fbaf516b932eb59f405516e16";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCityTemp);
+  //console.log(`${lat}aaaaa`);
+  //console.log(`${lon}aaaaa`);
 }
 
 function showCurrentlocationTemp(param) {
