@@ -23,7 +23,7 @@ function ForcastData(responseForcast) {
   let days = responseForcast.data.daily;
   days.forEach((day, index) => {
     if (index < 5) {
-      console.log(day);
+      // console.log(day);
       forcastMakeData += `<div class="col-4"><p class="nextDays">${forcastDate(
         day.dt
       )}</p></div>
@@ -59,7 +59,7 @@ function forcastApiSet(lat, lon) {
 
 function showCityTemp(response) {
   //console.log(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`);
-
+  //console.log(response.data)
   let h2 = document.querySelector("h2");
   let country = document.querySelector("#showCountry");
   let h3 = document.querySelector("h3");
@@ -73,10 +73,8 @@ function showCityTemp(response) {
   showTemp.innerHTML = Math.round(response.data.main.temp);
   Precipitation.innerHTML = response.data.main.humidity;
   Wind.innerHTML = Math.round(response.data.wind.speed);
-  icon.setAttribute(
-    "src",
-    `media/${response.data.weather[0].icon}.svg`
-  );
+  icon.setAttribute("src", `media/${response.data.weather[0].icon}.svg`);
+  //console.log(response.data);
   icon.setAttribute("alt", response.data.weather[0].description);
   ////// line below sending lat & lon of this city to a function to get the forcast API
   forcastApiSet(response.data.coord.lat, response.data.coord.lon);
