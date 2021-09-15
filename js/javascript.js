@@ -22,10 +22,11 @@ function ForcastData(responseForcast) {
   let forcastMakeData = `<div class="row">`;
   let days = responseForcast.data.daily;
   days.forEach((day, index) => {
-    console.log(day);
-    forcastMakeData +=
-     
-      `<div class="col-4"><p class="nextDays">${forcastDate(day.dt)}</p></div>
+    if(index<5){
+      console.log(day);
+      forcastMakeData += `<div class="col-4"><p class="nextDays">${forcastDate(
+        day.dt
+      )}</p></div>
             <div class="col-4">
               <p class="nextDays">
                 <span class="weather-forcast-max"> ${Math.round(
@@ -42,6 +43,7 @@ function ForcastData(responseForcast) {
                 }.png" class="forcastImage">
               </p>
             </div>`;
+    }
   });
   forcastMakeData = forcastMakeData + `</div >`;
   forcastPlaceHolder.innerHTML = forcastMakeData;
