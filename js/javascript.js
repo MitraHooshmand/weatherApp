@@ -1,5 +1,5 @@
 let myDate = new Date();
-let weekDay = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+let weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 //////// putting  0  befor minutes
 if (myDate.getMinutes() < 10) {
@@ -12,11 +12,56 @@ if (myDate.getMinutes() < 10) {
   } ${myDate.getHours()}:${myDate.getMinutes()}`;
 }
 /////////////////////  Type City Name
+function forcastDate(timeZoneForcast){
+  let dayarrayForcast = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  //let forcastDateformat = new Date(timeZoneForcast);
+  //let forcatDay = forcastDateformat.getDay();
+  return dayarrayForcast[new Date(timeZoneForcast).getDay()];
+}
+function ForcastData(responseForcast) {
+  console.log(responseForcast.data);
+  let forcastPlaceHolder = document.querySelector("#forcastData");
+  let forcastMakeData = `<div class="row">`;
+  let days = responseForcast.data.daily;
+  days.forEach((day, index) => {
+    // console.log(index)
+    forcastMakeData =
+      forcastMakeData +
+      `<div class="col-4"><p class="nextDays">${forcastDate(responseForcast.data.daily[index].dt)}</p></div>
+            <div class="col-4">
+              <p class="nextDays">
+                <span class="weather-forcast-max"> ${Math.round(
+                  responseForcast.data.daily[index].temp.max
+                )}°</span> |<span  class="weather-forcast-min" > ${Math.round(
+        responseForcast.data.daily[index].temp.min
+      )}°</span>
+              </p>
+            </div>
+            <div class="col-4">
+              <p class="nextDays">
+                <img src="http://openweathermap.org/img/wn/${
+                  responseForcast.data.daily[index].weather[0].icon
+                }.png" class="forcastImage">
+              </p>
+            </div>`;
+  });
+  forcastMakeData = forcastMakeData + `</div >`;
+  forcastPlaceHolder.innerHTML = forcastMakeData;
+}
+
+function forcastApiSet(lat, lon) {
+  let latForcast = lat;
+  let lonForcast = lon;
+  let apiKey = "9a740d7fbaf516b932eb59f405516e16";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latForcast}&lon=${lonForcast}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(ForcastData);
+}
+
 function showCityTemp(response) {
   //console.log(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`);
 
   let h2 = document.querySelector("h2");
-  let country = document.querySelector("#showCountry"); 
+  let country = document.querySelector("#showCountry");
   let h3 = document.querySelector("h3");
   let showTemp = document.querySelector("#showTemp");
   let Precipitation = document.querySelector("#Precipitation");
@@ -33,7 +78,8 @@ function showCityTemp(response) {
     ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
-  console.log(response);
+  ////// line below sending lat & lon of this city to a function to get the forcast API
+  forcastApiSet(response.data.coord.lat, response.data.coord.lon);
 }
 
 function onLoadDataTemp(inputText) {
@@ -105,3 +151,4 @@ currentTemp.addEventListener("click", showCurrentlocationTemp);
 ////////////////////
 
 onLoadDataTemp("Iran");
+//ForcastData();
