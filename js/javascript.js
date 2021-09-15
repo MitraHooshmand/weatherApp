@@ -16,12 +16,14 @@ function showCityTemp(response) {
   //console.log(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`);
 
   let h2 = document.querySelector("h2");
+  let country = document.querySelector("#showCountry"); 
   let h3 = document.querySelector("h3");
   let showTemp = document.querySelector("#showTemp");
   let Precipitation = document.querySelector("#Precipitation");
   let Wind = document.querySelector("#Wind");
   let icon = document.querySelector("#imgIcon");
-  h2.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
+  country.innerHTML = ` ${response.data.sys.country}`;
+  h2.innerHTML = `${response.data.name},`;
   h3.innerHTML = response.data.weather[0].description;
   showTemp.innerHTML = Math.round(response.data.main.temp);
   Precipitation.innerHTML = response.data.main.humidity;
