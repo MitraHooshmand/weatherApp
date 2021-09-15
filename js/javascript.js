@@ -12,17 +12,17 @@ if (myDate.getMinutes() < 10) {
   } ${myDate.getHours()}:${myDate.getMinutes()}`;
 }
 /////////////////////  Type City Name
-function forcastDate(timeZoneForcast){
+function forcastDate(timeZoneForcast) {
   let dayarrayForcast = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return dayarrayForcast[new Date(timeZoneForcast*10000).getDay()];
+  return dayarrayForcast[new Date(timeZoneForcast * 10000).getDay()];
 }
 function ForcastData(responseForcast) {
- // console.log(responseForcast.data);
+  // console.log(responseForcast.data);
   let forcastPlaceHolder = document.querySelector("#forcastData");
   let forcastMakeData = `<div class="row">`;
   let days = responseForcast.data.daily;
   days.forEach((day, index) => {
-    if(index<5){
+    if (index < 5) {
       console.log(day);
       forcastMakeData += `<div class="col-4"><p class="nextDays">${forcastDate(
         day.dt
@@ -38,9 +38,9 @@ function ForcastData(responseForcast) {
             </div>
             <div class="col-4">
               <p class="nextDays">
-                <img src="http://openweathermap.org/img/wn/${
+                <img src="media/${
                   day.weather[0].icon
-                }.png" class="forcastImage">
+                }.svg" class="forcastImage">
               </p>
             </div>`;
     }
@@ -75,7 +75,7 @@ function showCityTemp(response) {
   Wind.innerHTML = Math.round(response.data.wind.speed);
   icon.setAttribute(
     "src",
-    ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `media/${response.data.weather[0].icon}.svg`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
   ////// line below sending lat & lon of this city to a function to get the forcast API
@@ -111,10 +111,12 @@ function showCurrentlocationTemp(param) {
   navigator.geolocation.getCurrentPosition(showAllCurrentData);
 }
 let flag = 0;
+let unitScale = "";
 function chgToFahren(event) {
   if (flag == 0) {
     event.preventDefault();
     let tempPlaceholder = document.querySelector("#showTemp");
+    /// unitScale="imperial";
     let tofahrenheit = Math.round((tempPlaceholder.innerHTML * 9) / 5 + 32);
     tempPlaceholder.innerHTML = tofahrenheit;
     faren.classList.add("active");
@@ -127,6 +129,7 @@ function chgTocelsius(event) {
   if (flag == 1) {
     event.preventDefault();
     let tempPlaceholder = document.querySelector("#showTemp");
+    //unitScale = "metric";
     let toCelsius = Math.round(((tempPlaceholder.innerHTML - 32) * 5) / 9);
     tempPlaceholder.innerHTML = toCelsius;
     faren.classList.remove("active");

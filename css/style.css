@@ -27,14 +27,15 @@ h3 {
 }
 img {
   width: 140px;
-  border: 1px solid green;
-  background-color: #b9c6d6;
-  border-radius: 80px;
+  /* border: 1px solid green; */
+  /* background-color: #b9c6d6; */
+  /* border-radius: 80px; */
   margin-left: 40px;
   display: inline;
 }
 img:hover {
   border: 2px solid #2e7d32;
+  border-radius: 80px;
 }
 .forcastImage{
   width: 40px;
@@ -93,6 +94,9 @@ a:hover {
   min-height: 100%;
   opacity: 0.9;
 }
+/* .card-body{
+  background-color: #F4DFD0;
+} */
 .card-bg {
   border-radius: 3.25rem;
   width: 610px;
