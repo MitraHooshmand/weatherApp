@@ -14,33 +14,31 @@ if (myDate.getMinutes() < 10) {
 /////////////////////  Type City Name
 function forcastDate(timeZoneForcast){
   let dayarrayForcast = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  //let forcastDateformat = new Date(timeZoneForcast);
-  //let forcatDay = forcastDateformat.getDay();
-  return dayarrayForcast[new Date(timeZoneForcast).getDay()];
+  return dayarrayForcast[new Date(timeZoneForcast*10000).getDay()];
 }
 function ForcastData(responseForcast) {
-  console.log(responseForcast.data);
+ // console.log(responseForcast.data);
   let forcastPlaceHolder = document.querySelector("#forcastData");
   let forcastMakeData = `<div class="row">`;
   let days = responseForcast.data.daily;
   days.forEach((day, index) => {
-    // console.log(index)
-    forcastMakeData =
-      forcastMakeData +
-      `<div class="col-4"><p class="nextDays">${forcastDate(responseForcast.data.daily[index].dt)}</p></div>
+    console.log(day);
+    forcastMakeData +=
+     
+      `<div class="col-4"><p class="nextDays">${forcastDate(day.dt)}</p></div>
             <div class="col-4">
               <p class="nextDays">
                 <span class="weather-forcast-max"> ${Math.round(
-                  responseForcast.data.daily[index].temp.max
+                  day.temp.max
                 )}°</span> |<span  class="weather-forcast-min" > ${Math.round(
-        responseForcast.data.daily[index].temp.min
+        day.temp.min
       )}°</span>
               </p>
             </div>
             <div class="col-4">
               <p class="nextDays">
                 <img src="http://openweathermap.org/img/wn/${
-                  responseForcast.data.daily[index].weather[0].icon
+                  day.weather[0].icon
                 }.png" class="forcastImage">
               </p>
             </div>`;
